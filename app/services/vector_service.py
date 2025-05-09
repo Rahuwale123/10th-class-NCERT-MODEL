@@ -1,13 +1,14 @@
 from qdrant_client import QdrantClient
 from sentence_transformers import SentenceTransformer
 from app.config import (
-    QDRANT_HOST, QDRANT_PORT, COLLECTION_NAME,
+    QDRANT_URL, COLLECTION_NAME,
     EMBEDDING_MODEL
 )
 
 class VectorService:
     def __init__(self):
-        self.client = QdrantClient(host=QDRANT_HOST, port=QDRANT_PORT)
+        # Initialize Qdrant client with the hosted instance URL
+        self.client = QdrantClient(url=QDRANT_URL, timeout=300)  # 5 minutes timeout
         self.embedding_model = SentenceTransformer(EMBEDDING_MODEL)
 
     def search(self, query: str, limit: int = 7) -> list:

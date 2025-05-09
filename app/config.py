@@ -1,6 +1,5 @@
 # Qdrant Configuration
-QDRANT_HOST = "localhost"
-QDRANT_PORT = 6333
+QDRANT_URL = "http://13.203.212.171:6333"
 COLLECTION_NAME = "book_embeddings"
 VECTOR_SIZE = 384
 
